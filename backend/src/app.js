@@ -64,6 +64,9 @@ app.delete('/v0/reviews/:movieID', auth.check,
 app.post('/v0/movies/watchlist/:movieID', auth.check,
   movies.addToWatchList);
 
+app.get('/v0/movies/getTopRatedTMDB', auth.check,
+  movies.getTopRatedTMDB);
+
 app.get('/v0/movies/watchlist', auth.check,
   movies.getMoviesFromWatchList);
 

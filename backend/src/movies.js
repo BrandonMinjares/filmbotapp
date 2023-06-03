@@ -195,6 +195,27 @@ exports.likeMovie = async (req, res) => {
   return res.status(200).json('good');
 };
 
+exports.getTopRatedTMDB = async (req, res) => {
+  const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwY2ZkZmFhY2MyMTBhNDliMWQyNDJmYjAwNDc2MGUzZSIsInN1YiI6IjY0MmI0ZTVhYzBhMzA4MDBiNDNiZDg4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QUzBOBha7CKE3eOFe2iZVJrVz6NJv-r-PC_YhcnMNzc'
+    }
+  };
+  
+  fetch(url, options)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch(err => console.error('error:' + err));
+  return res.status(200).json('good');
+}
+
 exports.getTopRatedMovies = async (req, res) => {
   const select =
   `SELECT distinct movieid, AVG(cast("data" ->> 'rating' AS INTEGER)) `+
