@@ -39,7 +39,7 @@ const getWatchHistory = (setWatchHistory) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/watchlist`, {
+  fetch(`http://localhost:3010/v0/movies/watchlist`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -70,7 +70,7 @@ const getTopRatedMovies = (setTopRatedMovies) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/getTopRatedMovies`, {
+  fetch(`http://localhost:3010/v0/movies/getTopRatedMovies`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -101,7 +101,7 @@ const getRecommendations = (setRecommendations) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/getTMDBRecomendations`, {
+  fetch(`http://localhost:3010/v0/movies/getTMDBRecomendations`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
