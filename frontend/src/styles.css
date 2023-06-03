@@ -1,0 +1,363 @@
+@font-face {
+  font-family: 'My Custom Font';
+  src: url('./fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+* { 
+  margin: 0;
+  padding: 0;
+  font-family: 'My Custom Font', Courier, monospace;
+}
+
+html, body, #root, .App {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  background-color: #191919;
+}
+
+div {
+  max-height: 100%;
+  max-width: 100%;
+  display:block;
+}
+
+
+.movieList {
+    columns: 5 auto;
+  }
+
+.movie-page {
+  height: 100%;
+}
+
+.movie-search {
+  background-color: #333;
+}
+
+.movieDescription {
+  display: flex;
+  padding-top: 2em;
+}
+
+.movieImage {
+  height: 40vh;
+  width: 28vh;
+  border: 1px solid black;
+  border-radius: 4px;
+  position: fixed;
+}
+
+.float-image {
+  float: left;
+  padding-left: 2em;
+}
+
+.float-description {
+  float: left;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-size: 20px;
+}
+
+
+.search-inner {
+  width: 300px;
+  color: lightgray;
+}
+
+.vertical-menu {
+  width: 250px;
+  height: 220px;
+  overflow: auto;
+  float: right;
+}
+
+.vertical-menu li {
+  background-color: #eee;
+  color: lightgray;
+  display: block;
+  padding: 4px;
+  text-decoration: none;
+  list-style: none;
+  width: 228px;
+}
+
+
+.vertical-menu li.active {
+  background-color: #04AA6D;
+}
+
+.watchHistoryMovie {
+  -webkit-filter: brightness(100%);
+  width: 180px;
+  height: 280px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 10px;
+}
+
+.watchHistoryMovie:hover {
+  -webkit-filter: brightness(60%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+ul.images {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow-x: auto;
+  list-style: none;
+}
+
+ul.images li {
+  flex: 0 0 auto;
+}
+ul.images li img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.movieListType {
+  color: black;
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 18px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  color: #dee2e7;
+}
+
+.topnav a.filmbot-name {
+  color: lightgray;
+}
+
+.topnav a.filmbot-name:hover {
+  color: #dee2e7;
+}
+
+.search-container {
+  width: 450px;
+}
+.topnav .search-container {
+  float: right;
+  margin-right: 10em;
+}
+
+.search-container button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: lightblue;
+  color: black;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  width: 500px;
+  border: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 2px 6px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: lightgray;
+}
+
+/* https://stackoverflow.com/questions/67995632/how-to-fade-edges-of-background-image-of-element-to-blend-in-with-the-main-backg */
+.backdrop-image {
+  background-image: linear-gradient(to top, black 0%, black 100%);
+  height: 50vh;
+  width: 58%;
+
+  /* for webkit-based browsers */
+  -webkit-mask-image:
+    linear-gradient(to top, black 0%, black 100%),
+    linear-gradient(to top, transparent 0%, black 100%),
+    linear-gradient(to right, transparent 0%, black 100%),
+    linear-gradient(to bottom, transparent 0%, black 100%),
+    linear-gradient(to left, transparent 0%, black 100%);
+  -webkit-mask-position:
+    center,
+    top,
+    right,
+    bottom,
+    left;
+  -webkit-mask-size:
+    100% 100%,
+    100% 10px,
+    10px 100%,
+    100% 10px,
+    10px 100%;
+  -webkit-mask-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+   -webkit-mask-composite:
+    source-out,
+    source-over,
+    source-over,
+    source-over;
+    
+   /* for browsers which have implemented the official spec */
+  mask-image:
+    linear-gradient(to top, black 0%, black 100%),
+    linear-gradient(to top, transparent 0%, black 100%),
+    linear-gradient(to right, transparent 0%, black 100%),
+    linear-gradient(to bottom, transparent 0%, black 100%),
+    linear-gradient(to left, transparent 0%, black 100%);
+  mask-position:
+    center,
+    top,
+    right,
+    bottom,
+    left;
+  mask-size:
+    100% 100%,
+    100% 10px,
+    20px 100%,
+    100% 80px,
+    20px 100%;
+  mask-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+  mask-composite:
+    subtract,
+    add,
+    add,
+    add;
+}
+
+
+.backdrop-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  bottom: 8px;
+  left: 35px;
+  color: white;
+  font-size: 32px;
+}
+
+.overview {
+  font-size: 20px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.movie-grid {
+  padding-top: 2em;
+}
+
+.review {
+  border-top: 0.5px solid black;
+
+}
+
+.review-form {
+  font-size: 26px;
+  position: fixed;
+
+}
+
+.review-container {
+  padding-top: 3em;
+}
+
+button, .reviewbtn {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+
+
+button:hover, .reviewbtn:hover {
+  background-color: lightblue;
+}
+
+.watchButton {
+  padding: 0.6em;
+  background-color:black;
+  color: white;
+}
+
+.watchButton:hover {
+  background-color: #333;
+}
+
+.castandcrew {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+}
