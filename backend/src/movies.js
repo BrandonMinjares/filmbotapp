@@ -144,11 +144,14 @@ exports.getRecommendations = async (req, res) => {
         return data;
       });
     // console.log(movieInfo);
-    watchListArr.push(
-      {'poster_path': movieInfo.poster_path,
-        'id': movieInfo.id,
-        'original_title': movieInfo.original_title,
-      });
+    if (movieInfo.poster_path) {
+      console.log(movieInfo.poster_path);
+      watchListArr.push(
+        {'poster_path': movieInfo.poster_path,
+          'id': movieInfo.id,
+          'original_title': movieInfo.original_title,
+        });
+    }
   }
 
   return res.status(200).json(watchListArr);

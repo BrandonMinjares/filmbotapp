@@ -7,7 +7,6 @@ import BookmarkBorderTwoToneIcon from
   '@mui/icons-material/BookmarkBorderTwoTone';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import CardActionArea from '@mui/material/CardActionArea';
-const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const styles = {
   card: {
