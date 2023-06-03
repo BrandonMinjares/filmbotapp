@@ -1,0 +1,782 @@
+#
+# Film Recommendation Website Backend
+#
+
+openapi: '3.0.3'
+
+info:
+  description: Film Recommendation Website Backend
+  version: 0.1.0
+  title: Film Recommendation Website Backend
+
+servers:
+  - url: http://filmbot.io:3010/v0
+
+paths:
+  /login:
+    post:
+      description: Login
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Credentials'
+      responses:
+        200:
+          description: Email Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        409:
+          description: Email address taken or password incorrect
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+  /register:
+    post:
+      description: Register
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+      responses:
+        201:
+          description: Books Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterSuccess'
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+
+  /deleteAccount:
+    delete:
+      security:
+      - bearerAuth: []
+      description: Register
+      responses:
+        200:
+          description: Books Response
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: Unexpected Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedError'
+  /dummy:
+    get:
+      description: Dummy Endpoint
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DummyResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /streamingServices:
+    post:
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Services'
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DummyResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DummyResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /movies:
+    post:
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieRating'
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DummyResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /movies/watchlist:
+    get:
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchListArr'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /movies/recommendations:
+    get:
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecommendationListArr'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /movies/getTMDBRecomendations:
+    get:
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecommendationListArr'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /movies/getTopRatedMovies:
+    get:
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchListArr'     
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /movies/credits/{movieID}:
+    get:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Movie ID
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditsArr'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /movies/watchlist/{movieID}:
+    post:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Movie ID
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+      
+  /reviews:
+    post:
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DummyResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /reviews/{movieID}:
+    get:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Movie ID
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewArr'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Get mail by ID of user
+          schema:
+            type: string
+
+      responses:
+        200:
+          description: Email With Content Property
+          content:
+            application/json:
+              schema:
+                type: string
+        404:
+          description: Not Found 
+  
+
+  /searchmovie/{movie}:
+    get:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movie
+          required: true
+          description: Get movie info
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieArr'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /searchmovies/{movie}:
+    get:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movie
+          required: true
+          description: Get movie info
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieArr'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /profile:
+    get:
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonData'
+                
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      security:
+        - bearerAuth: []
+      description: Update Person Data
+      requestBody:
+        description: Request Body
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePersonData'
+      responses:
+        200:
+          description: Email Response
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+     
+
+  /likeMovie/{movieID}:
+    post:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Get movie info
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DummyResponse'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /notifications:
+    get:
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationArr'                
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+components:
+  schemas:
+    UnexpectedError:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+    Error:
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+        - code
+        - message
+
+    DummyResponse:
+      properties:
+        message:
+          type: string
+      required:
+        - message
+
+    Credentials:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+        - email
+        - password
+
+    Services:
+      type: array
+
+    MovieRating:
+      type: object
+      properties:
+        movieRating:
+          type: integer
+        movieId:
+          type: integer
+      required:
+        - movieRating
+        - movieId
+
+    CreditsArr:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/CreditsObj'
+
+    CreditsObj:
+      type: object
+      properties:
+        actor1:
+          type: string
+        actor2:
+          type: string
+        actor3:
+          type: string
+        director:
+          type: string
+      required:
+        - actor1
+        - actor2
+        - actor3
+        - director
+
+    TopRatedMoviesArr:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/TopRatedMoviesObj'
+
+    TopRatedMoviesObj:
+      type: object
+      properties:
+        movieid: 
+          type: string
+        avg_rating:
+          type: string
+
+    Register:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            first:
+              type: string
+            last:
+              type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+        - name
+        - email
+        - password
+
+    RegisterSuccess:
+      type: string
+      properties:
+        firstname:
+          type: string
+
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        accessToken:
+          type: string
+        userid:
+          type: string
+        firstLoginBoolean:
+          type: integer
+          default: 1
+      required:
+        - email
+        - accessToken
+        - firstLoginBoolean
+
+    PersonData:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            first:
+              type: string
+            last:
+              type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+      required:
+        - name
+        - email
+        - password
+
+    UpdatePersonData:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            first:
+              type: string
+            last:
+              type: string
+        email:
+          type: string
+          format: email
+      required:
+        - name
+        - email
+
+    Review:
+      type: object
+      properties:
+        moviereviewid:
+          type: integer
+        movieid:
+          type: integer
+        rating:
+          type: integer
+        review:
+          type: string
+        movie:
+          type: string
+        likes:
+          type: integer
+      
+    ReviewArr:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/Review'
+        
+    MovieArr:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/MovieInfo'
+
+
+    RecommendationListArr:
+      type: array
+      properties:
+        movieid:
+          type: integer
+
+    WatchListArr:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/WatchListObject'
+
+    WatchListObject:
+      type: object
+      properties:
+        poster_path:
+          type: string
+        id:
+          type: integer
+        original_title:
+          type: string
+
+    NotificationArr:
+      type: array
+      properties:
+        items:
+          $ref: '#/components/schemas/NotificationResponse'
+
+    NotificationResponse:
+      type: object
+      properties:
+        notificationid:
+          type: string
+        content:
+          type: array
+        read:
+          type: boolean
+
+    MovieInfo:
+      type: object
+      properties:
+        adult:
+          type: boolean
+        backdrop_path:
+          type: string
+        genre_ids:
+          type: array
+        id:
+          type: integer
+        original_language:
+          type: string
+        original_title:
+          type: string
+        overview:
+          type: string
+        popularity:
+          type: number
+        poster_path:
+          type: string
+        release_date:
+          type: string
+        title:
+          type: string
+        video:
+          type: boolean
+        vote_average:
+          type: number
+        vote_count:
+          type: integer
+
+
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
