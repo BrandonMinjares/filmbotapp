@@ -10,7 +10,7 @@ info:
   title: Film Recommendation Website Backend
 
 servers:
-  - url: http://filmbot:3010/v0
+  - url: http://filmbot:8080/v0
 
 paths:
   /login:
