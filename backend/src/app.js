@@ -76,6 +76,9 @@ app.get('/v0/movies/watchlist', auth.check,
 app.get('/v0/movies/recommendations', auth.check,
   movies.getRecommendations);
 
+app.get('/v0/movies/getRecommendationsBasedOffMovie/:movieID', auth.check,
+  movies.getRecommendationsBasedOffMovie);
+
 app.get('/v0/movies/credits/:movieID', auth.check,
   movies.getCredits);
 

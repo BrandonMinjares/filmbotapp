@@ -200,6 +200,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /movies/getRecommendationsBasedOffMovie/{movieID}:
+    get:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Movie ID
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 
   /movies/getTMDBRecomendations:
     get:
@@ -303,13 +327,6 @@ paths:
     post:
       security:
         - bearerAuth: []
-      parameters:
-        - in: path
-          name: movieID
-          required: true
-          description: Movie ID
-          schema:
-            type: string
       responses:
         200:
           description: Succesful

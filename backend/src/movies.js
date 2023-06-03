@@ -117,6 +117,23 @@ exports.getMoviesFromWatchList = async (req, res) => {
   return res.status(200).json(watchListArr);
 };
 
+exports.getRecommendationsBasedOffMovie = async (req, res) => {
+  const url = `https://api.themoviedb.org/3/movie/${req.params.movieID}/recommendations?language=en-US&page=1`;
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwY2ZkZmFhY2MyMTBhNDliMWQyNDJmYjAwNDc2MGUzZSIsInN1YiI6IjY0MmI0ZTVhYzBhMzA4MDBiNDNiZDg4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QUzBOBha7CKE3eOFe2iZVJrVz6NJv-r-PC_YhcnMNzc'
+    }
+  };
+
+  fetch(url, options)
+    .then(res => res.json())
+    .then(json => console.log(json.results))
+    .catch(err => console.error('error:' + err));
+  return res.status(200).json('good');
+}
+
 exports.getRecommendations = async (req, res) => {
   const select = 'select recommendList from person WHERE '+
   `userid = $1`;
