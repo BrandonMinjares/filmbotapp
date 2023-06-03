@@ -67,6 +67,9 @@ app.post('/v0/movies/watchlist/:movieID', auth.check,
 app.get('/v0/movies/getTopRatedTMDB', auth.check,
   movies.getTopRatedTMDB);
 
+app.get('/v0/movies/getNowPlayingTMDB', auth.check,
+  movies.getNowPlayingTMDB);
+
 app.get('/v0/movies/watchlist', auth.check,
   movies.getMoviesFromWatchList);
 
