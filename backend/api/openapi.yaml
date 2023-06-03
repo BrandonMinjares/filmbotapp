@@ -271,6 +271,7 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/MovieArr'     
                 type: string   
         default:
           description: unexpected error
@@ -289,7 +290,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string   
+                $ref: '#/components/schemas/MovieArr'     
         default:
           description: unexpected error
           content:

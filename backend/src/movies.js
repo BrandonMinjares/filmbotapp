@@ -117,6 +117,7 @@ exports.getMoviesFromWatchList = async (req, res) => {
   return res.status(200).json(watchListArr);
 };
 
+// 1 page returns 21 results
 exports.getRecommendationsBasedOffMovie = async (req, res) => {
   const url = `https://api.themoviedb.org/3/movie/${req.params.movieID}/recommendations?language=en-US&page=1`;
   const options = {
@@ -226,7 +227,7 @@ exports.getTopRatedTMDB = async (req, res) => {
   .then(res => res.json())
   .then(json => console.log(json.results))
   .catch(err => console.error('error:' + err));
-  return res.status(200).json('good');
+  return res.status(200).json('test');
 }
 
 exports.getNowPlayingTMDB = async (req, res) => {
@@ -239,11 +240,9 @@ exports.getNowPlayingTMDB = async (req, res) => {
     }
   };
   
-  fetch(url, options)
-  .then(res => res.json())
-  .then(json => console.log(json.results))
-  .catch(err => console.error('error:' + err));
-  return res.status(200).json('good');
+  const response = await fetch(url, options)
+  const data = await response.json();
+  return res.status(200).json(data.results);
 }
 
 exports.getTopRatedMovies = async (req, res) => {
