@@ -25,5 +25,8 @@
     "nodemon": "^2.0.22",
     "pg": "^8.11.0",
     "swagger-ui-express": "^4.6.3"
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^8.0.1"
   }
 }
