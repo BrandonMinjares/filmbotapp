@@ -100,7 +100,7 @@ const getTopRatedMovies = (setTopRatedMovies) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`http://localhost:3010/v0/movies/getTopRatedMovies`, {
+  fetch(`http://localhost:3010/v0/movies/getTopRatedTMDB`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,

@@ -223,11 +223,9 @@ exports.getTopRatedTMDB = async (req, res) => {
     }
   };
   
-  fetch(url, options)
-  .then(res => res.json())
-  .then(json => console.log(json.results))
-  .catch(err => console.error('error:' + err));
-  return res.status(200).json('test');
+  const response = await fetch(url, options)
+  const data = await response.json();
+  return res.status(200).json(data.results);
 }
 
 exports.getNowPlayingTMDB = async (req, res) => {
