@@ -75,6 +75,7 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
   // Check if User with that email already exists
+  console.log('in register');
   const checkEmail =
   `SELECT userID, data FROM Person WHERE data->>'email' = $1`;
   const emailQuery = {
