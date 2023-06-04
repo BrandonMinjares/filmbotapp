@@ -29,7 +29,7 @@ export default function SignIn() {
       password: data.get('password'),
     };
 
-    fetch(`http://filmbot.io/v0/login`, {
+    fetch(`https://filmbot.io/v0/login`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
