@@ -28,7 +28,7 @@ export default function Register() {
       email: data.get('email'),
       password: data.get('password'),
     };
-
+    console.log(user);
     fetch(`/register`, {
       method: 'POST',
       body: JSON.stringify(user),
