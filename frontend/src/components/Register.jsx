@@ -28,8 +28,8 @@ export default function Register() {
       email: data.get('email'),
       password: data.get('password'),
     };
-    console.log(user);
-    fetch(`/register`, {
+
+    fetch(`https://filmbot.io/v0/register`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
@@ -41,7 +41,6 @@ export default function Register() {
         return res.json();
       })
       .catch((err) => {
-        console.log(err);
         if (err.status === 409) {
           setError(`${err.status}: User already created or password incorrect`);
         }
