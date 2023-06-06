@@ -41,8 +41,7 @@ export default function Register() {
         return res.json();
       })
       .then((json) => {
-        window.location.href =
-        `/#/login`;
+        console.log(json);
       })
       .catch((err) => {
         if (err.status === 409) {
