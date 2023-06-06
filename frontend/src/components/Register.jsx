@@ -41,6 +41,7 @@ export default function Register() {
         return res.json();
       })
       .catch((err) => {
+        console.log(err);
         if (err.status === 409) {
           setError(`${err.status}: User already created or password incorrect`);
         }
