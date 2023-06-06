@@ -40,10 +40,6 @@ export default function Register() {
         if (!res.ok) throw res;
         return res.json();
       })
-      .then((json) => {
-        window.location.href =
-        `/#/login`;
-      })
       .catch((err) => {
         if (err.status === 409) {
           setError(`${err.status}: User already created or password incorrect`);
