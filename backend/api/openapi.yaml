@@ -10,7 +10,7 @@ info:
   title: Film Recommendation Website Backend
 
 servers:
-  - url: https://shark-app-xe7jp.ondigitalocean.app/v0
+  - url: https://filmbot.io/v0
 paths:
   /login:
     post:
