@@ -29,7 +29,7 @@ export default function Register() {
       password: data.get('password'),
     };
 
-    fetch(`https://filmbot.io/v0/register`, {
+    fetch(`http://filmbot.io/v0/register`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
@@ -39,6 +39,10 @@ export default function Register() {
       .then((res) => {
         if (!res.ok) throw res;
         return res.json();
+      })
+      .then((json) => {
+        window.location.href =
+        `/#/login`;
       })
       .catch((err) => {
         if (err.status === 409) {
