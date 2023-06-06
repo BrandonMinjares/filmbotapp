@@ -23,7 +23,6 @@ const apiSpec = path.join(__dirname, '../api/openapi.yaml');
 
 const apidoc = yaml.load(fs.readFileSync(apiSpec, 'utf8'));
 app.use('/v0/api-docs', swaggerUi.serve, swaggerUi.setup(apidoc));
-app.use(express.static(path.join(__dirname, '../../frontend/build')));
 app.use(
   OpenApiValidator.middleware({
     apiSpec: apiSpec,
