@@ -10,7 +10,7 @@ info:
   title: Film Recommendation Website Backend
 
 servers:
-  - url: https://filmbot.io/v0
+  - url: https://lobster-app-9k3ne.ondigitalocean.app/v0
 paths:
   /login:
     post:
