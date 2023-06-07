@@ -12,10 +12,11 @@
 html, body, #root, .App {
   height: 100%;
   overflow: auto;
+  color: white;
 }
 
 body {
-  background-color: white;
+  background-color: #121212;
 }
 
 div {
@@ -45,7 +46,7 @@ div {
 .movieImage {
   height: 40vh;
   width: 28vh;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 4px;
   position: fixed;
 }
@@ -126,7 +127,7 @@ ul.images li img{
 }
 
 .movieListType {
-  color: black;
+  color: white;
   padding-left: 1em;
   padding-top: 1em;
 }
@@ -172,7 +173,6 @@ ul.images li img{
   width: 20%;
   padding: 10px;
   background: lightblue;
-  color: black;
   font-size: 17px;
   border: 1px solid grey;
   border-left: none; /* Prevent double borders */
@@ -304,13 +304,17 @@ ul.images li img{
   bottom: 8px;
   left: 35px;
   color: white;
-  font-size: 32px;
+  font-size: 36px;
 }
 
 .overview {
-  font-size: 20px;
+  font-size: 25px;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+}
+
+.castandcrew {
+  font-size: 25px;
 }
 
 .movie-grid {
@@ -318,14 +322,14 @@ ul.images li img{
 }
 
 .review {
-  border-top: 0.5px solid black;
+  border-top: 0.5px solid white;
+  color: white;
 
 }
 
 .review-form {
-  font-size: 26px;
+  font-size: 30px;
   position: fixed;
-
 }
 
 .review-container {
@@ -333,12 +337,9 @@ ul.images li img{
 }
 
 button, .reviewbtn {
-	background: none;
-	color: inherit;
 	border: none;
 	padding: 0;
 	cursor: pointer;
-	outline: inherit;
 }
 
 
@@ -348,8 +349,8 @@ button:hover, .reviewbtn:hover {
 
 .watchButton {
   padding: 0.6em;
-  background-color:black;
-  color: white;
+  background-color:white;
+  color: black;
 }
 
 .watchButton:hover {

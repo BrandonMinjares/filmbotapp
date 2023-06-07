@@ -7,6 +7,7 @@ import BookmarkBorderTwoToneIcon from
   '@mui/icons-material/BookmarkBorderTwoTone';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import CardActionArea from '@mui/material/CardActionArea';
+import Carousel from 'react-material-ui-carousel'
 
 const styles = {
   card: {
@@ -175,8 +176,8 @@ export default function Dashboard() {
   return (
     <div>
       <Navbar />
-      <Typography textAlign={'center'} fontSize={32} padding={2}>
-        Search For Movies. Make Reviews. Get Recommendations</Typography>
+      <Typography textAlign={'center'} fontSize={50} padding={2}>
+        Search For Movies. Post Reviews. Get Recommendations</Typography>
       {watchHistory.length > 0 ?
         <h2 className='movieListType'>Watch List</h2> : <h2> </h2>}
       <Grid

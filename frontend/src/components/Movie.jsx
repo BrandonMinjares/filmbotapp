@@ -188,14 +188,14 @@ export default function Movie(props) {
       </div>
       <Box sx={{flexGrow: 1}}>
         <Grid container spacing={2} className='movie-grid'>
-          <Grid item xs={3} s={4}>
+          <Grid item xs={4} s={4}>
             <div className='float-image'>
               <img className = 'movieImage' src = {poster} alt = 'img'/>
             </div>
           </Grid>
-          <Grid item xs={6} s={7}>
+          <Grid item xs={8} s={8}>
             <div className='float-description'>
-              <h3>Storyline</h3>
+              <h2>Storyline</h2>
               <div className='overview'>{props.row.overview}</div>
               {credits &&
           credits.map((row) => (
@@ -220,33 +220,6 @@ export default function Movie(props) {
               </div>
             </div>
 
-          </Grid>
-          <Grid item xs={3} s={3}>
-            <Box className='review-form'
-              component="form" onSubmit={handleSubmit}
-              noValidate>
-              <h5>Rating</h5>
-              <ReactStars name='stars' id = 'stars' {...fourthExample} />
-              <TextField
-                fullWidth
-                id="review"
-                name='review'
-                multiline
-                rows={10}
-                inputProps={{maxLength: 280}}
-                placeholder="Post a Review"
-              />
-              <Button
-                type="submit"
-                aria-label='Search Movies'
-                variant="contained"
-                sx={{mt: 3, mb: 2, bgcolor: 'white',
-                  color: 'black',
-                }}
-              >
-              Post Review
-              </Button>
-            </Box>
           </Grid>
         </Grid>
       </Box>

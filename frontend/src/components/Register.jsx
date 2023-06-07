@@ -29,7 +29,7 @@ export default function Register() {
       password: data.get('password'),
     };
 
-    fetch(`https://lobster-app-9k3ne.ondigitalocean.app/v0/register`, {
+    fetch(`http://localhost:3010/v0/register`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
