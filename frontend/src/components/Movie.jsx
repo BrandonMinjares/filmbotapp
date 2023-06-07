@@ -145,7 +145,7 @@ export default function Movie(props) {
   const [value, setValue] = useState(0);
   const [reviews, setReview] = useState(null);
   const [credits, setCredits] = useState(null);
-  const [watchIds, setWatchIds] = useState(null);
+  const [watchId, setWatchIds] = useState(null);
 
 
   const handleSubmit = (event) => {
@@ -240,9 +240,16 @@ export default function Movie(props) {
           ))
               }
               <div className='watchButtonContainer'>
+                {watchId === 0 &&
                 <button id={props.row.id} className = 'watchButton'
                   onClick={() => saveToWatchHistory(props.row.id)}
                 >Save to watch list</button>
+              }
+              {watchId === 1 &&
+                <button id={props.row.id} className = 'watchButton'
+                  onClick={() => saveToWatchHistory(props.row.id)}
+                >Remove from watch list</button>
+              }
               </div>
               <div className='review-container'>
                 {reviews &&

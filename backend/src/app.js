@@ -75,6 +75,9 @@ app.get('/v0/movies/watchlist', auth.check,
 app.get('/v0/movies/getWatchListIds/:movieID', auth.check,
   movies.getWatchListIds);
 
+app.put('/v0/movies/removeFromWatchList/:movieID', auth.check,
+  movies.removeFromWatchList);
+
 app.get('/v0/movies/recommendations', auth.check,
   movies.getRecommendations);
 

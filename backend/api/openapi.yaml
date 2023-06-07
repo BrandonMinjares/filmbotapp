@@ -182,6 +182,31 @@ paths:
                 $ref: '#/components/schemas/Error'
 
 
+  /movies/removeFromWatchList/{movieID}:
+    put:
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Movie ID
+          schema:
+            type: string
+      responses:
+        200:
+          description: Succesful
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
   /movies/getWatchListIds/{movieID}:
     get:
       security:
