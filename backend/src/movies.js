@@ -306,6 +306,7 @@ exports.getTMDBRecomendations = async (req, res) => {
 };
 
 exports.getWatchListIds = async (req, res) => {
+  // console.log(req.params.movieID);
   const select = 'select watchList from person WHERE '+
   `userid = $1`;
 
@@ -315,7 +316,11 @@ exports.getWatchListIds = async (req, res) => {
   };
 
   const {rows} = await pool.query(query);
-  console.log(rows[0].watchlist);
-  return res.status(200).json(rows[0].watchlist);
-
+  console.log(rows);
+  for (const id of rows[0].watchlist) {
+    if (req.params.movieID === id) {
+      return res.status(200).json(1);
+    }
+  }
+  return res.status(200).json(0);
 }

@@ -72,9 +72,9 @@ app.get('/v0/movies/getNowPlayingTMDB', auth.check,
 app.get('/v0/movies/watchlist', auth.check,
   movies.getMoviesFromWatchList);
 
-app.get('/v0/movies/getWatchListIds', auth.check,
+app.get('/v0/movies/getWatchListIds/:movieID', auth.check,
   movies.getWatchListIds);
-  
+
 app.get('/v0/movies/recommendations', auth.check,
   movies.getRecommendations);
 

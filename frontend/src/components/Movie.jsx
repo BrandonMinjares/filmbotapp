@@ -106,6 +106,36 @@ const saveToWatchHistory = (movieID) => {
     });
 };
 
+const fetchWatchListIds = (movieID, setWatchIds) => {
+  const item = localStorage.getItem('user');
+  if (!item) {
+    return;
+  }
+  const user = JSON.parse(item);
+  const bearerToken = user ? user.accessToken : '';
+  fetch(`${baseUrl}/v0/movies/getWatchListIds/${movieID}`, {
+    method: 'GET',
+    headers: new Headers({
+      'Authorization': `Bearer ${bearerToken}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        console.log('notok');
+        throw response;
+      }
+      return response.json();
+    })
+    .then((json) => {
+      setWatchIds(json);
+      console.log(json);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 
 /**
  * @param {object} props
@@ -115,6 +145,8 @@ export default function Movie(props) {
   const [value, setValue] = useState(0);
   const [reviews, setReview] = useState(null);
   const [credits, setCredits] = useState(null);
+  const [watchIds, setWatchIds] = useState(null);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -176,6 +208,8 @@ export default function Movie(props) {
   useEffect(() => {
     fetchReviews(props.row.id, setReview);
     fetchCredits(props.row.id, setCredits);
+    fetchWatchListIds(props.row.id, setWatchIds);
+
     // nothing in array, it will only run once
   }, [props.row.id]);
 

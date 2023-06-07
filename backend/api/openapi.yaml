@@ -182,17 +182,25 @@ paths:
                 $ref: '#/components/schemas/Error'
 
 
-  /movies/getWatchListIds:
+  /movies/getWatchListIds/{movieID}:
     get:
       security:
         - bearerAuth: []
+      parameters:
+        - in: path
+          name: movieID
+          required: true
+          description: Movie ID
+          schema:
+            type: string
       responses:
         200:
           description: Succesful
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WatchListIds'
+                type: integer
+                default: 0
         default:
           description: unexpected error
           content:
