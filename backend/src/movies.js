@@ -316,7 +316,7 @@ exports.getWatchListIds = async (req, res) => {
   };
 
   const {rows} = await pool.query(query);
-  console.log(rows);
+  // console.log(rows);
   for (const id of rows[0].watchlist) {
     if (req.params.movieID === id) {
       return res.status(200).json(1);
@@ -326,7 +326,7 @@ exports.getWatchListIds = async (req, res) => {
 }
 
 exports.removeFromWatchList = async (req, res) => {
-  console.log(req.params.movieID);
+  // console.log(req.params.movieID);
   const update = 'UPDATE person ' +
   `SET watchList = array_remove(watchList, $1) ` +
   'WHERE userid = $2 RETURNING watchList';

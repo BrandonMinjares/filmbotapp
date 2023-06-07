@@ -77,35 +77,6 @@ const fetchReviews = (movieID, setReview) => {
     });
 };
 
-// Saving movieID to watch history
-const saveToWatchHistory = (movieID) => {
-  const item = localStorage.getItem('user');
-  if (!item) {
-    return;
-  }
-  const user = JSON.parse(item);
-  const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/watchlist/${movieID}`, {
-    method: 'POST',
-    headers: new Headers({
-      'Authorization': `Bearer ${bearerToken}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        console.log('notok');
-        throw response;
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      console.log(error);
-      // setMail([]);
-      // setError(`${error.status} - ${error.statusText}`);
-    });
-};
-
 const fetchWatchListIds = (movieID, setWatchIds) => {
   const item = localStorage.getItem('user');
   if (!item) {
@@ -136,15 +107,27 @@ const fetchWatchListIds = (movieID, setWatchIds) => {
     });
 };
 
-const deleteWatchHistoryId = (movieID) => {
+
+/**
+ * @param {object} props
+ * @return {void}
+ */
+export default function Movie(props) {
+  const [value, setValue] = useState(0);
+  const [reviews, setReview] = useState(null);
+  const [credits, setCredits] = useState(null);
+  const [watchId, setWatchIds] = useState(null);
+  
+// Saving movieID to watch history
+const saveToWatchHistory = (movieID) => {
   const item = localStorage.getItem('user');
   if (!item) {
     return;
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/removeFromWatchList/${movieID}`, {
-    method: 'PUT',
+  fetch(`${baseUrl}/v0/movies/watchlist/${movieID}`, {
+    method: 'POST',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -157,24 +140,43 @@ const deleteWatchHistoryId = (movieID) => {
       }
       return response.json();
     })
-    .then((json) => {
-      console.log(json);
-    })
     .catch((error) => {
       console.log(error);
+      // setMail([]);
+      // setError(`${error.status} - ${error.statusText}`);
     });
 };
 
-/**
- * @param {object} props
- * @return {void}
- */
-export default function Movie(props) {
-  const [value, setValue] = useState(0);
-  const [reviews, setReview] = useState(null);
-  const [credits, setCredits] = useState(null);
-  const [watchId, setWatchIds] = useState(null);
 
+  const deleteWatchHistoryId = (movieID) => {
+    const item = localStorage.getItem('user');
+    if (!item) {
+      return;
+    }
+    const user = JSON.parse(item);
+    const bearerToken = user ? user.accessToken : '';
+    fetch(`${baseUrl}/v0/movies/removeFromWatchList/${movieID}`, {
+      method: 'PUT',
+      headers: new Headers({
+        'Authorization': `Bearer ${bearerToken}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.log('notok');
+          throw response;
+        }
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();

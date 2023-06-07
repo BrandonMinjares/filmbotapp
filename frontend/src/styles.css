@@ -128,8 +128,9 @@ ul.images li img{
 
 .movieListType {
   color: white;
-  padding-left: 1em;
+  padding-left: 0.5em;
   padding-top: 1em;
+  font-size: 38px;
 }
 
 
@@ -354,7 +355,7 @@ button:hover, .reviewbtn:hover {
 }
 
 .watchButton:hover {
-  background-color: #333;
+  background-color: #49CB90;
 }
 
 .castandcrew {
