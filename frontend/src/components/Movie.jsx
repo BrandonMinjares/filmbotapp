@@ -136,6 +136,34 @@ const fetchWatchListIds = (movieID, setWatchIds) => {
     });
 };
 
+const deleteWatchHistoryId = (movieID) => {
+  const item = localStorage.getItem('user');
+  if (!item) {
+    return;
+  }
+  const user = JSON.parse(item);
+  const bearerToken = user ? user.accessToken : '';
+  fetch(`${baseUrl}/v0/movies/removeFromWatchList/${movieID}`, {
+    method: 'PUT',
+    headers: new Headers({
+      'Authorization': `Bearer ${bearerToken}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        console.log('notok');
+        throw response;
+      }
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 /**
  * @param {object} props
@@ -247,7 +275,7 @@ export default function Movie(props) {
               }
               {watchId === 1 &&
                 <button id={props.row.id} className = 'watchButton'
-                  onClick={() => saveToWatchHistory(props.row.id)}
+                  onClick={() => deleteWatchHistoryId(props.row.id)}
                 >Remove from watch list</button>
               }
               </div>
