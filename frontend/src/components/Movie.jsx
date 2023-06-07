@@ -8,9 +8,64 @@ import {useState} from 'react';
 
 import {useEffect} from 'react';
 import SingleReview from './SingleReview';
-import {Grid} from '@mui/material';
+import {Card, CardActionArea, CardMedia, Grid, IconButton} from '@mui/material';
 // import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const baseUrl = process.env.REACT_APP_BASE_URL;
+
+const styles = {
+  card: {
+    position: 'relative',
+  },
+  overlay1: {
+    position: 'absolute',
+    top: '5px',
+    right: '5px',
+    color: 'white',
+    maxWidth: '27px',
+    maxHeight: '27px',
+    backgroundColor: 'black',
+  },
+  overlay2: {
+    position: 'absolute',
+    top: '5px',
+    right: '36px',
+    color: 'white',
+    maxWidth: '27px',
+    maxHeight: '27px',
+  },
+};
+
+const getRecommendations = (movieID, setRecommendations) => {
+  const item = localStorage.getItem('user');
+  if (!item) {
+    return;
+  }
+  const user = JSON.parse(item);
+  const bearerToken = user ? user.accessToken : '';
+  fetch(`http://localhost:3010/v0/movies/getRecommendationsBasedOffMovie/${movieID}`, {
+    method: 'GET',
+    headers: new Headers({
+      'Authorization': `Bearer ${bearerToken}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        console.log('notok');
+        throw response;
+      }
+      return response.json();
+    })
+    .then((res) => {
+      setRecommendations(res);
+    })
+    .catch((error) => {
+      console.log(error);
+      // setMail([]);
+      // setError(`${error.status} - ${error.statusText}`);
+    });
+};
+
 
 const fetchCredits = (movieID, setCredits) => {
   const item = localStorage.getItem('user');
@@ -117,7 +172,8 @@ export default function Movie(props) {
   const [reviews, setReview] = useState(null);
   const [credits, setCredits] = useState(null);
   const [watchId, setWatchIds] = useState(null);
-  
+  const [recommendations, setRecommendations] = useState([]);
+
 // Saving movieID to watch history
 const saveToWatchHistory = (movieID) => {
   const item = localStorage.getItem('user');
@@ -239,6 +295,7 @@ const saveToWatchHistory = (movieID) => {
     fetchReviews(props.row.id, setReview);
     fetchCredits(props.row.id, setCredits);
     fetchWatchListIds(props.row.id, setWatchIds);
+    getRecommendations(props.row.id, setRecommendations);
 
     // nothing in array, it will only run once
   }, [props.row.id]);
