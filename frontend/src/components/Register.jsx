@@ -37,6 +37,7 @@ export default function Register() {
       },
     })
       .then((res) => {
+        console.log(res);
         if (!res.ok) throw res;
         return res.json();
       })
@@ -44,6 +45,7 @@ export default function Register() {
         console.log(json);
       })
       .catch((err) => {
+        console.log(err);
         if (err.status === 409) {
           setError(`${err.status}: User already created or password incorrect`);
         }
