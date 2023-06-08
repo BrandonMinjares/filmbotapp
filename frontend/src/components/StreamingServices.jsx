@@ -31,7 +31,7 @@ const setStreamingServices = (services) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch('http://localhost:3010/v0/streamingServices', {
+  fetch('https://filmbot.io/filmbotapp-backend/v0/streamingServices', {
     method: 'POST',
     body: JSON.stringify(services),
     headers: new Headers({

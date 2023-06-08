@@ -13,7 +13,7 @@ const getMovieInfo = (setMovies, movie) => {
   // 'api_key=d334dbf7dfa49ff0acc99b0ede6f1f19&query=scream';
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`http://localhost:3010/v0/searchmovie/${movie}`, {
+  fetch(`https://filmbot.io/filmbotapp-backend/v0/searchmovie/${movie}`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,

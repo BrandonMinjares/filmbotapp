@@ -12,7 +12,7 @@ const getUserInfo = (setUserInfo) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`http://localhost:3010/v0/profile`, {
+  fetch(`https://filmbot.io/filmbotapp-backend/v0/profile`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -67,7 +67,7 @@ export default function Profile() {
     }
     const user = JSON.parse(item);
     const bearerToken = user ? user.accessToken : '';
-    fetch(`${process.env.LOCAL_HOST_SERVER}/v0/profile`, {
+    fetch(`https://filmbot.io/filmbotapp-backend/v0/profile`, {
       method: 'PUT',
       body: JSON.stringify(newData),
       headers: new Headers({
@@ -102,7 +102,7 @@ export default function Profile() {
     }
     const user = JSON.parse(item);
     const bearerToken = user ? user.accessToken : '';
-    fetch(`${process.env.LOCAL_HOST_SERVER}/v0/deleteAccount`, {
+    fetch(`https://filmbot.io/filmbotapp-backend/v0/deleteAccount`, {
       method: 'DELETE',
       headers: new Headers({
         'Authorization': `Bearer ${bearerToken}`,

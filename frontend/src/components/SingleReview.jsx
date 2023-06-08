@@ -9,7 +9,7 @@ import './../styles.css';
   const deleteReview = () => {
     const user = JSON.parse(item);
     const bearerToken = user ? user.accessToken : '';
-    fetch(`http://localhost:3010/v0/reviews/${props.reviewid}`, {
+    fetch(`https://filmbot.io/filmbotapp-backend/v0/reviews/${props.reviewid}`, {
       method: 'DELETE',
       headers: new Headers({
         'Authorization': `Bearer ${bearerToken}`,

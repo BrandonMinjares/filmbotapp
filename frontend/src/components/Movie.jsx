@@ -42,7 +42,7 @@ const getRecommendations = (movieID, setRecommendations) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`http://localhost:3010/v0/movies/getRecommendationsBasedOffMovie/${movieID}`, {
+  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/getRecommendationsBasedOffMovie/${movieID}`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -75,7 +75,7 @@ const fetchCredits = (movieID, setCredits) => {
 
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/credits/${movieID}`, {
+  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/credits/${movieID}`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -107,7 +107,7 @@ const fetchReviews = (movieID, setReview) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/reviews/${movieID}`, {
+  fetch(`https://filmbot.io/filmbotapp-backend/v0/reviews/${movieID}`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -139,7 +139,7 @@ const fetchWatchListIds = (movieID, setWatchIds) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/getWatchListIds/${movieID}`, {
+  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/getWatchListIds/${movieID}`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -182,7 +182,7 @@ const saveToWatchHistory = (movieID) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`${baseUrl}/v0/movies/watchlist/${movieID}`, {
+  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/watchlist/${movieID}`, {
     method: 'POST',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -211,7 +211,7 @@ const saveToWatchHistory = (movieID) => {
     }
     const user = JSON.parse(item);
     const bearerToken = user ? user.accessToken : '';
-    fetch(`${baseUrl}/v0/movies/removeFromWatchList/${movieID}`, {
+    fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/removeFromWatchList/${movieID}`, {
       method: 'PUT',
       headers: new Headers({
         'Authorization': `Bearer ${bearerToken}`,
@@ -256,7 +256,7 @@ const saveToWatchHistory = (movieID) => {
       movie: props.row.original_title,
     };
 
-    fetch(`${baseUrl}/v0/reviews`, {
+    fetch(`https://filmbot.io/filmbotapp-backend/v0/reviews`, {
       method: 'POST',
       body: JSON.stringify(movieReview),
 

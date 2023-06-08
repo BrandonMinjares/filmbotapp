@@ -133,7 +133,7 @@ export default function Navbar() {
   const bearerToken = user ? user.accessToken : '';
 
   const handleInputChange = async (event, value) => {
-    fetch(`${baseUrl}/v0/searchmovies/${value}`, {
+    fetch(`https://filmbot.io/filmbotapp-backend/v0/searchmovies/${value}`, {
       method: 'GET',
       headers: new Headers({
         'Authorization': `Bearer ${bearerToken}`,
