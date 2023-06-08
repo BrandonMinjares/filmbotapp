@@ -34,7 +34,7 @@ app.use(
 app.get('/dummy', dummy.get);
 // Your routes go here
 app.post('/login', auth.login);
-app.post('https://oyster-app-bb9vv.ondigitalocean.app/register', auth.register);
+app.post('/register', auth.register);
 
 app.delete('/deleteAccount', auth.check,
   auth.deleteAccount);
