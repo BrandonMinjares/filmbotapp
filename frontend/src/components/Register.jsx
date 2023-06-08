@@ -29,7 +29,7 @@ export default function Register() {
       password: data.get('password'),
     };
 
-    fetch(`https://oyster-app-bb9vv.ondigitalocean.app/filmbotapp-backend/v0/register`, {
+    fetch(`https://oyster-app-bb9vv.ondigitalocean.app/filmbotapp-backend/register`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
