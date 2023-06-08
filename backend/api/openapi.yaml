@@ -10,7 +10,7 @@ info:
   title: Film Recommendation Website Backend
 
 servers:
-  - url: https://oyster-app-bb9vv.ondigitalocean.app/filmbotapp-backend
+  - url: https://oyster-app-bb9vv.ondigitalocean.app/filmbotapp-backend/v0
 paths:
   /login:
     post:
@@ -37,7 +37,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnexpectedError'
-  /v0/register:
+  /register:
     post:
       description: Register
       requestBody:
