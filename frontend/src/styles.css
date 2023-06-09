@@ -12,11 +12,11 @@
 html, body, #root, .App {
   height: 100%;
   overflow: auto;
-  color: white;
+  color: black;
 }
 
 body {
-  background-color: black;
+  background-color: white;
 }
 
 div {
