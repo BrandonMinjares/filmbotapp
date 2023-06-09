@@ -29,7 +29,7 @@ export default function Register() {
       password: data.get('password'),
     };
 
-    fetch(`https://filmbot.io/filmbotapp-backend/v0/register`, {
+    fetch(`${process.env.REACT_APP_BASE_URL}/v0/register`, {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
