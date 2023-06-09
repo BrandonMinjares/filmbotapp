@@ -12,11 +12,11 @@
 html, body, #root, .App {
   height: 100%;
   overflow: auto;
-  color: white;
+  color: black;
 }
 
 body {
-  background-color: #121212;
+  background-color: white;
 }
 
 div {
@@ -127,7 +127,7 @@ ul.images li img{
 }
 
 .movieListType {
-  color: white;
+  color: black;
   padding-left: 0.5em;
   padding-top: 1em;
   font-size: 38px;
@@ -212,7 +212,7 @@ ul.images li img{
 }
 
 .dropdown-content a {
-  color: white;
+  color: black;
   padding: 2px 6px;
   text-decoration: none;
   display: block;
@@ -304,7 +304,7 @@ ul.images li img{
   position: absolute;
   bottom: 8px;
   left: 35px;
-  color: white;
+  color: black;
   font-size: 36px;
 }
 
@@ -324,8 +324,7 @@ ul.images li img{
 
 .review {
   border-top: 0.5px solid white;
-  color: white;
-
+  color: black;
 }
 
 .review-form {
@@ -350,8 +349,8 @@ button:hover, .reviewbtn:hover {
 
 .watchButton {
   padding: 0.6em;
-  background-color:white;
-  color: black;
+  background-color:black;
+  color: white;
 }
 
 .watchButton:hover {
