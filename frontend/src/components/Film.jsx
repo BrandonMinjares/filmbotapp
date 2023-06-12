@@ -7,16 +7,9 @@ import {useEffect} from 'react';
 import Navbar from './Navbar';
 
 const getMovieInfo = (setMovies, movie) => {
-  const item = localStorage.getItem('user');
-
-  // const movieInfo = 'https://api.themoviedb.org/3/search/movie?' +
-  // 'api_key=d334dbf7dfa49ff0acc99b0ede6f1f19&query=scream';
-  const user = JSON.parse(item);
-  const bearerToken = user ? user.accessToken : '';
-  fetch(`https://filmbot.io/filmbotapp-backend/v0/searchmovie/${movie}`, {
+  fetch(`${process.env.REACT_APP_BASE_URL}/v0/searchmovie/${movie}`, {
     method: 'GET',
     headers: new Headers({
-      'Authorization': `Bearer ${bearerToken}`,
       'Content-Type': 'application/json',
     }),
   })

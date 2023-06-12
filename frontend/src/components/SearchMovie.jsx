@@ -34,7 +34,7 @@ export default function SearchMovie() {
       return;
     }
 
-    fetch(`https://filmbot.io/filmbotapp-backend/v0/searchmovie/${movie}`, {
+    fetch(`${process.env.REACT_APP_BASE_URL}/v0/searchmovie/${movie}`, {
       method: 'GET',
       headers: new Headers({
         'Authorization': `Bearer ${bearerToken}`,

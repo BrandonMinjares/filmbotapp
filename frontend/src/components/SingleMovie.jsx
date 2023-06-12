@@ -16,7 +16,7 @@ const setMovieRating = (movieRating, movieId) => {
 
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies`, {
+  fetch(`${process.env.REACT_APP_BASE_URL}/v0/movies`, {
     method: 'POST',
     body: JSON.stringify(info),
     headers: new Headers({

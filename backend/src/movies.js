@@ -279,6 +279,7 @@ exports.getTopRatedMovies = async (req, res) => {
 };
 
 exports.getTMDBRecomendations = async (req, res) => {
+  /*
   const select = 'select recommendList from person WHERE '+
   `userid = $1`;
 
@@ -289,8 +290,8 @@ exports.getTMDBRecomendations = async (req, res) => {
 
   const {rows} = await pool.query(query);
   const movieID = rows[0].recommendlist[0];
-
-
+*/
+  const movieID = 100;
   const movies = await fetch(`https://api.themoviedb.org/3/movie/${movieID}` +
   `/recommendations?api_key=${process.env.TMDB_API_KEY}&language=en-US`)
     .then((response) => {

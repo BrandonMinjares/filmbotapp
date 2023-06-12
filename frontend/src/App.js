@@ -21,7 +21,7 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path="/dashboard" element={
-          <PrivateRoute><Dashboard/></PrivateRoute>
+          <Dashboard/>
         }/>
 
         <Route path="/register" element={<Register/>}/>
@@ -29,7 +29,7 @@ function App() {
         <Route path="/logout" element={<Login/>}/>
 
         <Route path="/movie/:movie" element={
-          <PrivateRoute><Film/></PrivateRoute>
+          <Film/>
         }/>
 
         <Route path="/profile" element={
@@ -48,7 +48,7 @@ function App() {
         }/>
 
         <Route path="/" element={
-          <PrivateRoute><Dashboard/></PrivateRoute>
+          <Dashboard/>
         }/>
 
 

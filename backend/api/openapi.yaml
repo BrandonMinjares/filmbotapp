@@ -10,7 +10,7 @@ info:
   title: Film Recommendation Website Backend
 
 servers:
-  - url: https://filmbot.io/filmbotapp-backend/v0
+  - url: http://localhost:3000/v0
 paths:
   /login:
     post:
@@ -253,8 +253,6 @@ paths:
 
   /movies/getRecommendationsBasedOffMovie/{movieID}:
     get:
-      security:
-        - bearerAuth: []
       parameters:
         - in: path
           name: movieID
@@ -278,8 +276,6 @@ paths:
 
   /movies/getTMDBRecomendations:
     get:
-      security:
-        - bearerAuth: []
       responses:
         200:
           description: Succesful
@@ -296,8 +292,6 @@ paths:
 
   /movies/getTopRatedMovies:
     get:
-      security:
-        - bearerAuth: []
       responses:
         200:
           description: Succesful
@@ -314,8 +308,6 @@ paths:
 
   /movies/getTopRatedTMDB:
     get:
-      security:
-        - bearerAuth: []
       responses:
         200:
           description: Succesful
@@ -332,8 +324,6 @@ paths:
 
   /movies/getNowPlayingTMDB:
     get:
-      security:
-        - bearerAuth: []
       responses:
         200:
           description: Succesful
@@ -351,8 +341,6 @@ paths:
 
   /movies/credits/{movieID}:
     get:
-      security:
-        - bearerAuth: []
       parameters:
         - in: path
           name: movieID
@@ -420,8 +408,6 @@ paths:
   
   /reviews/{movieID}:
     get:
-      security:
-        - bearerAuth: []
       parameters:
         - in: path
           name: movieID
@@ -467,8 +453,6 @@ paths:
 
   /searchmovie/{movie}:
     get:
-      security:
-        - bearerAuth: []
       parameters:
         - in: path
           name: movie
@@ -492,8 +476,6 @@ paths:
 
   /searchmovies/{movie}:
     get:
-      security:
-        - bearerAuth: []
       parameters:
         - in: path
           name: movie

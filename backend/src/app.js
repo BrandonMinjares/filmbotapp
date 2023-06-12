@@ -45,11 +45,9 @@ app.post('/v0/streamingServices', auth.check,
 app.get('/v0/streamingServices', auth.check,
   streamingServices.getStreamingServices);
 
-app.get('/v0/searchmovie/:movie', auth.check,
-  movies.getMovieInfo);
+app.get('/v0/searchmovie/:movie', movies.getMovieInfo);
 
-app.get('/v0/searchmovies/:movie', auth.check,
-  movies.getAllMovieInfo);
+app.get('/v0/searchmovies/:movie', movies.getAllMovieInfo);
 
 app.post('/v0/reviews', auth.check,
   reviews.postReview);
@@ -63,11 +61,9 @@ app.delete('/v0/reviews/:movieID', auth.check,
 app.post('/v0/movies/watchlist/:movieID', auth.check,
   movies.addToWatchList);
 
-app.get('/v0/movies/getTopRatedTMDB', auth.check,
-  movies.getTopRatedTMDB);
+app.get('/v0/movies/getTopRatedTMDB', movies.getTopRatedTMDB);
 
-app.get('/v0/movies/getNowPlayingTMDB', auth.check,
-  movies.getNowPlayingTMDB);
+app.get('/v0/movies/getNowPlayingTMDB', movies.getNowPlayingTMDB);
 
 app.get('/v0/movies/watchlist', auth.check,
   movies.getMoviesFromWatchList);
@@ -81,10 +77,10 @@ app.put('/v0/movies/removeFromWatchList/:movieID', auth.check,
 app.get('/v0/movies/recommendations', auth.check,
   movies.getRecommendations);
 
-app.get('/v0/movies/getRecommendationsBasedOffMovie/:movieID', auth.check,
+app.get('/v0/movies/getRecommendationsBasedOffMovie/:movieID',
   movies.getRecommendationsBasedOffMovie);
 
-app.get('/v0/movies/credits/:movieID', auth.check,
+app.get('/v0/movies/credits/:movieID',
   movies.getCredits);
 
 
@@ -97,10 +93,10 @@ app.get('/v0/profile', auth.check,
 app.put('/v0/profile', auth.check,
   profile.updateProfileInfo);
 
-app.get('/v0/movies/getTopRatedMovies', auth.check,
+app.get('/v0/movies/getTopRatedMovies',
   movies.getTopRatedMovies);
 
-app.get('/v0/movies/getTMDBRecomendations', auth.check,
+app.get('/v0/movies/getTMDBRecomendations',
   movies.getTMDBRecomendations);
 
 app.get('/v0/notifications', auth.check,

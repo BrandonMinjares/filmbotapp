@@ -39,7 +39,7 @@ const getWatchHistory = (setWatchHistory) => {
   }
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/watchlist`, {
+  fetch(`${process.env.REACT_APP_BASE_URL}/v0/movies/watchlist`, {
     method: 'GET',
     headers: new Headers({
       'Authorization': `Bearer ${bearerToken}`,
@@ -64,16 +64,9 @@ const getWatchHistory = (setWatchHistory) => {
 };
 
 const getNowPlayingTMDB = (setNowPlayingTMDB) => {
-  const item = localStorage.getItem('user');
-  if (!item) {
-    return;
-  }
-  const user = JSON.parse(item);
-  const bearerToken = user ? user.accessToken : '';
-  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/getNowPlayingTMDB`, {
+  fetch(`${process.env.REACT_APP_BASE_URL}/v0/movies/getNowPlayingTMDB`, {
     method: 'GET',
     headers: new Headers({
-      'Authorization': `Bearer ${bearerToken}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     }),
   })
@@ -95,16 +88,9 @@ const getNowPlayingTMDB = (setNowPlayingTMDB) => {
 };
 
 const getTopRatedMovies = (setTopRatedMovies) => {
-  const item = localStorage.getItem('user');
-  if (!item) {
-    return;
-  }
-  const user = JSON.parse(item);
-  const bearerToken = user ? user.accessToken : '';
-  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/getTopRatedTMDB`, {
+  fetch(`${process.env.REACT_APP_BASE_URL}/v0/movies/getTopRatedTMDB`, {
     method: 'GET',
     headers: new Headers({
-      'Authorization': `Bearer ${bearerToken}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     }),
   })
@@ -126,16 +112,9 @@ const getTopRatedMovies = (setTopRatedMovies) => {
 };
 
 const getRecommendations = (setRecommendations) => {
-  const item = localStorage.getItem('user');
-  if (!item) {
-    return;
-  }
-  const user = JSON.parse(item);
-  const bearerToken = user ? user.accessToken : '';
-  fetch(`https://filmbot.io/filmbotapp-backend/v0/movies/getTMDBRecomendations`, {
+  fetch(`${process.env.REACT_APP_BASE_URL}/v0/movies/getTMDBRecomendations`, {
     method: 'GET',
     headers: new Headers({
-      'Authorization': `Bearer ${bearerToken}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     }),
   })
