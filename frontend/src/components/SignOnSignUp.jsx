@@ -23,12 +23,14 @@ export default function SignOnSignUp() {
         <Box>
             <Grid container spacing={2}>
                 <Grid item sm={6}>
-                    <Button 
+                    <Button
+                    sx={{textAlign:'center', whiteSpace: 'nowrap'}}
                     color="primary" variant="contained"
-                    onClick={() => window.location.href='#/login'}>Log In</Button>
+                    onClick={() => window.location.href='#/login'}>Sign In</Button>
                 </Grid>
                 <Grid item sm={6}>
                     <Button 
+                    sx={{textAlign:'center', whiteSpace: 'nowrap'}}
                     color="secondary" variant="contained"
                     onClick={() => window.location.href='#/register'}>Sign Up</Button>
                 </Grid>
