@@ -27,6 +27,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 
 import avatar from '../images/blankprofileimage.png';
+import SignOnSignUp from './SignOnSignUp';
 // import {useEffect} from 'react';
 const baseUrl = process.env.REACT_APP_BASE_URL;
 
@@ -131,7 +132,9 @@ export default function Navbar() {
   const item = localStorage.getItem('user');
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-
+  if (bearerToken === '') {
+    console.log('test');
+  }
   const handleInputChange = async (event, value) => {
     fetch(`${process.env.REACT_APP_BASE_URL}/v0/searchmovies/${value}`, {
       method: 'GET',
@@ -257,6 +260,9 @@ export default function Navbar() {
 
 
       */}
+
+      
+      {bearerToken === '' ? <SignOnSignUp /> : 
           <Box sx={{flexGrow: 0}}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{p: 1}}>
@@ -306,6 +312,7 @@ export default function Navbar() {
               </MenuItem>
             </Menu>
           </Box>
+        }
         </Toolbar>
       </Container>
     </AppBar>
