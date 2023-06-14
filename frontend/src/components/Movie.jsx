@@ -35,17 +35,12 @@ const styles = {
   },
 };
 
+
 const getRecommendations = (movieID, setRecommendations) => {
-  const item = localStorage.getItem('user');
-  if (!item) {
-    return;
-  }
-  const user = JSON.parse(item);
-  const bearerToken = user ? user.accessToken : '';
+  console.log(movieID);
   fetch(`${process.env.REACT_APP_BASE_URL}/v0/movies/getRecommendationsBasedOffMovie/${movieID}`, {
     method: 'GET',
     headers: new Headers({
-      'Authorization': `Bearer ${bearerToken}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     }),
   })
@@ -57,6 +52,7 @@ const getRecommendations = (movieID, setRecommendations) => {
       return response.json();
     })
     .then((res) => {
+      console.log(res);
       setRecommendations(res);
     })
     .catch((error) => {
@@ -310,6 +306,10 @@ const saveToWatchHistory = (movieID) => {
             <div className='float-description'>
               <h2>Storyline</h2>
               <div className='overview'>{props.row.overview}</div>
+              
+              
+              
+              
               {credits &&
           credits.map((row) => (
             <div key = {row} className='castandcrew'>
@@ -324,6 +324,25 @@ const saveToWatchHistory = (movieID) => {
                   onClick={() => saveToWatchHistory(props.row.id)}
                 >Save to watch list</button>
               }
+
+        {recommendations.length < 0 &&
+          recommendations.map((row) => (
+            <Grid item key = {row.id} className='moviePoster'>
+              <Card
+                style={styles.card}
+                sx={{'maxWidth': 220, 'maxHeight': 360, ':hover': {
+                  boxShadow: 20,
+                }}}>
+                <CardMedia
+                  style={styles.media}
+                  component="img"
+                  image={`https://image.tmdb.org/t/p/original${row.poster_path}`}
+                  alt={`${row.original_title} Poster`}>
+                </CardMedia>
+              </Card>
+            </Grid>
+          ))
+        }
               {watchId === 1 &&
                 <button id={props.row.id} className = 'watchButton'
                   onClick={() => deleteWatchHistoryId(props.row.id)}
