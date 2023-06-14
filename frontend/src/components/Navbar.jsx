@@ -29,7 +29,6 @@ import Dialog from '@mui/material/Dialog';
 import avatar from '../images/blankprofileimage.png';
 import SignOnSignUp from './SignOnSignUp';
 // import {useEffect} from 'react';
-const baseUrl = process.env.REACT_APP_BASE_URL;
 
 /**
  * @param {*} props
