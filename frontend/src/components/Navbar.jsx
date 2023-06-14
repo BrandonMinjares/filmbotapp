@@ -29,7 +29,6 @@ import Dialog from '@mui/material/Dialog';
 import avatar from '../images/blankprofileimage.png';
 import SignOnSignUp from './SignOnSignUp';
 // import {useEffect} from 'react';
-const baseUrl = process.env.REACT_APP_BASE_URL;
 
 /**
  * @param {*} props
@@ -132,9 +131,6 @@ export default function Navbar() {
   const item = localStorage.getItem('user');
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  if (bearerToken === '') {
-    console.log('test');
-  }
   const handleInputChange = async (event, value) => {
     fetch(`${process.env.REACT_APP_BASE_URL}/v0/searchmovies/${value}`, {
       method: 'GET',

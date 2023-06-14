@@ -42,7 +42,8 @@ export default function Register() {
         return res.json();
       })
       .then((json) => {
-        console.log(json);
+        window.location.href =
+          '/#/login';
       })
       .catch((err) => {
         console.log(err);
