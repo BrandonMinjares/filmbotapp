@@ -131,9 +131,6 @@ export default function Navbar() {
   const item = localStorage.getItem('user');
   const user = JSON.parse(item);
   const bearerToken = user ? user.accessToken : '';
-  if (bearerToken === '') {
-    console.log('test');
-  }
   const handleInputChange = async (event, value) => {
     fetch(`${process.env.REACT_APP_BASE_URL}/v0/searchmovies/${value}`, {
       method: 'GET',
