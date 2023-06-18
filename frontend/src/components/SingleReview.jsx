@@ -3,10 +3,15 @@ import ReactStars from 'react-rating-stars-component';
 import React from 'react';
 import './../styles.css';
 
-//  import DeleteIcon from '@mui/icons-material/Delete';
-//  import {IconButton} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import {IconButton} from '@mui/material';
+
 /*
   const deleteReview = () => {
+    const item = localStorage.getItem('user');
+    if (!item) {
+      return;
+    }
     const user = JSON.parse(item);
     const bearerToken = user ? user.accessToken : '';
     fetch(`https://filmbot.io/filmbotapp-backend/v0/reviews/${props.reviewid}`, {
@@ -29,7 +34,8 @@ import './../styles.css';
         // setError(`${error.status} - ${error.statusText}`);
       });
   };
- */
+  */
+
 /**
  * @param {object} props
  * @return {void}
@@ -40,8 +46,8 @@ export default function SingleReview(props) {
     return;
   }
 
-  // const user = JSON.parse(item);
-  // const userid = user.userid;
+  const user = JSON.parse(item);
+  const userid = user.userid;
   const fourthExample = {
     value: props.row.data.rating,
     size: 18,
