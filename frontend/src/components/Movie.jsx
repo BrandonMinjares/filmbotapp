@@ -271,14 +271,6 @@ const saveToWatchHistory = (movieID) => {
   const releaseYear = (props.row.release_date).substring(0, 4);
   // const backdrop = `https://image.tmdb.org/t/p/original${props.row.backdrop_path}`;
 
-  const fourthExample = {
-    size: 20,
-    value: 0,
-    onChange: (newValue) => {
-      setValue(newValue);
-    },
-  };
-
   useEffect(() => {
     fetchReviews(props.row.id, setReview);
     fetchCredits(props.row.id, setCredits);
@@ -288,6 +280,13 @@ const saveToWatchHistory = (movieID) => {
     // nothing in array, it will only run once
   }, [props.row.id]);
 
+  const movieRating = (props.row.vote_average/2);
+  const fourthExample = {
+    value: movieRating,
+    size: 20,
+    color2: '#ffd700',
+    edit: false,
+  };
   return (
     <div className='movie-page'>
       <div className= 'backdrop-container'>
@@ -305,16 +304,15 @@ const saveToWatchHistory = (movieID) => {
           <Grid item xs={8} s={8}>
             <div className='float-description'>
               <h2>Storyline</h2>
-              <div className='overview'>{props.row.overview}</div>
-              
-              
-              
+              <div className='overview'>{props.row.overview}</div>              
               
               {credits &&
           credits.map((row) => (
             <div key = {row} className='castandcrew'>
               <div>Director: {row.director}</div>
               <div>Cast: {row.actor1}, {row.actor2}, {row.actor3}</div>
+              <ReactStars className='stars'{...fourthExample} />
+
             </div>
           ))
               }
