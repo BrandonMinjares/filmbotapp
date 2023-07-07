@@ -64,6 +64,14 @@ export default function SingleMovie(props) {
       <ReactStars {...fourthExample} />
       <img className ='movieImage' src = {poster} alt = 'img'
       />
+
+<div data-jw-widget
+     data-api-key="oIMMGlOY13GzWo8hYPyVWtPAtZCLGrmO" 
+     data-object-type="movie"
+     data-title="The Matrix"            
+     data-year="2000"
+     data-theme="light"
+></div>
     </div>
   );
 }

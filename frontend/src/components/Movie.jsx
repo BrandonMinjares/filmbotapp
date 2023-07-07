@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet'
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,6 +12,7 @@ import SingleReview from './SingleReview';
 import {Card, CardActionArea, CardMedia, Grid, IconButton} from '@mui/material';
 // import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const baseUrl = process.env.REACT_APP_BASE_URL;
+
 
 const styles = {
   card: {
@@ -276,7 +278,6 @@ const saveToWatchHistory = (movieID) => {
     fetchCredits(props.row.id, setCredits);
     fetchWatchListIds(props.row.id, setWatchIds);
     getRecommendations(props.row.id, setRecommendations);
-
     // nothing in array, it will only run once
   }, [props.row.id]);
 
@@ -312,6 +313,13 @@ const saveToWatchHistory = (movieID) => {
           </Grid>
           <Grid item xs={6} s={6}>
             <div className='float-description'>
+              <div data-jw-widget
+                  data-api-key="oIMMGlOY13GzWo8hYPyVWtPAtZCLGrmO" 
+                  data-object-type="movie"
+                  data-title={props.row.original_title}      
+                  data-year={releaseYear}
+                  data-theme="light">
+                  </div>
               <h2>Storyline</h2>
               <div className='overview'>{props.row.overview}</div>              
               
@@ -390,7 +398,9 @@ const saveToWatchHistory = (movieID) => {
               </Button>
             </Box>
           </Grid>
-
+                  <Helmet>
+        <script async src="https://widget.justwatch.com/justwatch_widget.js"></script>
+      </Helmet>
         </Grid>
       </Box>
     </div>
