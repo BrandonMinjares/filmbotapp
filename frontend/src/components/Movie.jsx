@@ -319,7 +319,13 @@ const saveToWatchHistory = (movieID) => {
                   data-title={props.row.original_title}      
                   data-year={releaseYear}
                   data-theme="light">
-                  </div>
+                </div>
+              <div>
+                <a className='justWatch' data-original='https://www.justwatch.com' href='https://www.justwatch.com/us'>
+                  Powered by
+                <span className='justWatchSpan'>JustWatch</span>
+</a>
+              </div>
               <h2>Storyline</h2>
               <div className='overview'>{props.row.overview}</div>              
               
