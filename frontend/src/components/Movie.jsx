@@ -9,9 +9,9 @@ import {useState} from 'react';
 
 import {useEffect} from 'react';
 import SingleReview from './SingleReview';
-import {Card, CardActionArea, CardMedia, Grid, IconButton} from '@mui/material';
+import {Card, CardMedia, Grid} from '@mui/material';
 // import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-const baseUrl = process.env.REACT_APP_BASE_URL;
+// const baseUrl = process.env.REACT_APP_BASE_URL;
 
 
 const styles = {
