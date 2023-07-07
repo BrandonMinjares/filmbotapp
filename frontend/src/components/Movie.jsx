@@ -313,6 +313,10 @@ const saveToWatchHistory = (movieID) => {
           </Grid>
           <Grid item xs={6} s={6}>
             <div className='float-description'>
+            <a className='justWatch' data-original='https://www.justwatch.com' href='https://www.justwatch.com/us'>
+                  Watch providers powered by
+                <span className='justWatchSpan'>JustWatch</span>
+            </a>
               <div data-jw-widget
                   data-api-key="oIMMGlOY13GzWo8hYPyVWtPAtZCLGrmO" 
                   data-object-type="movie"
@@ -321,10 +325,6 @@ const saveToWatchHistory = (movieID) => {
                   data-theme="light">
                 </div>
               <div>
-                <a className='justWatch' data-original='https://www.justwatch.com' href='https://www.justwatch.com/us'>
-                  Powered by
-                <span className='justWatchSpan'>JustWatch</span>
-</a>
               </div>
               <h2>Storyline</h2>
               <div className='overview'>{props.row.overview}</div>              
