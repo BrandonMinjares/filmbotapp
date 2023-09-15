@@ -314,7 +314,6 @@ const saveToWatchHistory = (movieID) => {
           <Grid item xs={6} s={6}>
             <div className='float-description'>
             <a className='justWatch' data-original='https://www.justwatch.com' href='https://www.justwatch.com/us'>
-                  Powered by
                 <span className='justWatchSpan'>JustWatch</span>
             </a>
               <div data-jw-widget

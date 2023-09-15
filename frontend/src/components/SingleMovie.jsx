@@ -66,10 +66,8 @@ export default function SingleMovie(props) {
       />
 
 <div data-jw-widget
-     data-api-key="oIMMGlOY13GzWo8hYPyVWtPAtZCLGrmO" 
+     data-api-key={process.env.REACT_APP_BASE_URL}
      data-object-type="movie"
-     data-title="The Matrix"            
-     data-year="2000"
      data-theme="light"
 ></div>
     </div>
