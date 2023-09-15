@@ -1,3 +1,5 @@
+'''
+
 import psycopg2
 import pandas as pd
 import csv
@@ -163,3 +165,5 @@ cur.execute(sql, (recommendations, 'f4c2714f-6888-485c-a6e0-3508d4fc77b9'))
 conn.commit()
 cur.close()
 conn.close()
+
+'''

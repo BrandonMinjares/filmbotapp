@@ -1,4 +1,4 @@
-
+'''
 import psycopg2
 import pandas as pd
 import math
@@ -188,3 +188,6 @@ schedule.every(15).seconds.do(job)
 while True:
     schedule.run_pending()
     tm.sleep(1)
+
+
+'''
