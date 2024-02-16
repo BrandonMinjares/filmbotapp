@@ -24,6 +24,7 @@
     "node-fetch": "^2.6.11",
     "nodemon": "^2.0.22",
     "pg": "^8.11.0",
+    "semver": "^7.5.2",
     "swagger-ui-express": "^4.6.3"
   },
   "devDependencies": {
