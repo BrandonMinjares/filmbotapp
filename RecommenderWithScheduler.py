@@ -6,8 +6,6 @@ import schedule
 import time as tm
 import csv
 
-
-
 def startRecommending(id):
     data = pd.read_csv('ratings.csv')
     userFindAvgById = {}
